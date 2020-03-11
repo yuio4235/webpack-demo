@@ -20,6 +20,12 @@ module.exports = {
                 use: [
                     'file-loader'
                 ]
+            },
+            {
+                test: /\.(woff|woff2)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     }
