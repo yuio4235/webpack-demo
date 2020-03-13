@@ -1,31 +1,14 @@
-import _ from "lodash";
-import printMe from './print.js';
-import "./style.css";
-import {cube} from "./math.js";
 
-function component() {
-    var element = document.element.createElement('pre');
-
-    element.innerHTML = [
-        'Hello webpack!',
-        '5 cubed is equal to ' + cube(5)
-    ].join('\n\n');
-
-    return element;
+function getComponent() {
+    return import(/* webpackChunkName: "loadsh" */ 'lodash')
+    .then(({default: _}) => {
+        const element = document.createElement('div');
+        element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+        return element;
+    })
+    .catch( error => "An error occured while loading the component." );
 }
 
-let element = component();
-
-document.body.appendChild(element);
-
-if(module.hot) {
-    module.hot.accept('./print.js', () => {
-        console.log('Accepting the updated printMe module!');
-        
-        document.body.removeChild(element);
-
-        element = component();
-
-        document.body.appendChild(element);
-    });
-}
+getComponent().then( component => {
+    document.body.appendChild(component);
+});
