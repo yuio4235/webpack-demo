@@ -6,5 +6,9 @@ module.exports = merge(common, {
     devServer: {
         contentBase: './dist'
     },
-    mode: "development"
+    mode: "development",
+    optimization: { //这个地方不用再使用UglifyPlugin,这个会增加bundle的体积，默认现在用的TerserPlugin
+        runtimeChunk: true, 
+        splitChunks: {chunks: "all", maxSize: 1200000}
+    }    
 });

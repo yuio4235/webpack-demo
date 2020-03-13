@@ -4,7 +4,7 @@ import "./style.css";
 import {cube} from "./math.js";
 
 function component() {
-    var element = document.element.createElement('pre');
+    var element = document.createElement('pre');
 
     element.innerHTML = [
         'Hello webpack!',
