@@ -33,5 +33,6 @@ module.exports = {
         new ManifestPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    mode: "production"
 };
