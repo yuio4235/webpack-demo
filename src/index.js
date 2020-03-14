@@ -1,14 +1,15 @@
+import _ from "lodash";
 
-function getComponent() {
-    return import(/* webpackChunkName: "loadsh" */ 'lodash')
-    .then(({default: _}) => {
-        const element = document.createElement('div');
-        element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-        return element;
-    })
-    .catch( error => "An error occured while loading the component." );
+import Print from "./print.js";
+
+function component() {
+    const element = document.createElement('div');
+
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+
+    element.onclick = Print.bind(null, 'Hello webpack');
+
+    return element;
 }
 
-getComponent().then( component => {
-    document.body.appendChild(component);
-});
+document.body.appendChild(component());

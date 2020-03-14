@@ -1,20 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin')
-const webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        app: './src/index.js',
-    },
-    devtool: 'inline-source-map',
+    entry: './src/index.js',
     devServer: {
         contentBase: '/',
         hot: true
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -28,11 +23,20 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({title: 'Output Management'}),
+        new HtmlWebpackPlugin({title: 'Caching'}),
         new CleanWebpackPlugin(),
-        new ManifestPlugin(),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
     ],
-    mode: "production"
+    optimization: {
+        moduleIds: false,
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    }
 };
