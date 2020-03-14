@@ -1,4 +1,3 @@
-import _ from "lodash";
 
 function component() {
     const element = document.createElement('div');
@@ -10,7 +9,7 @@ function component() {
     const br = document.createElement('br');
 
     button.onclick = () => {
-        $("body").css("background-color", "red");
+        this.alert("wow, I can alert in webpack. I hate console.log().");
     };
 
     element.appendChild(button);

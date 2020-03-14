@@ -17,5 +17,12 @@ module.exports = {
         })
     ],
     mode: 'development',
-
+    module: {
+        rules: [
+            {
+                test: require.resolve('./src/index.js'),
+                use: 'imports-loader?this=>window',
+            }
+        ]
+    }
 };
