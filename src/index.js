@@ -1,17 +1,12 @@
-const webpackNumbers = require('danny-webpack-numbers-lib');
+import {cube} from './math.js';
 
 function component() {
-    const element = document.createElement('div');
+    const element = document.createElement('pre');
 
-    const btn = document.createElement('button');
-
-    btn.innerHTML = 'Click me to convert nums to words';
-
-    btn.onclick = () => {
-        console.log(webpackNumbers.numsToWord(1));
-    };
-
-    element.appendChild(btn);
+    element.innerHTML = [
+        'Hello Webpack!',
+        '5 cube is equal to ' + cube(5)
+    ].join('\n\n');
 
     return element;
 }
