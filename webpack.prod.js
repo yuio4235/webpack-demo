@@ -7,4 +7,7 @@ module.exports = merge(common, {
     mode: "production",
     plugins: [
     ],
+    optimization: {
+        runtimeChunk: 'single',
+    }
 });

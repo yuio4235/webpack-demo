@@ -4,27 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        index: './src/index.js',
-    },
+    entry: './src/index.js',
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Code Splitting'
+            title: 'Caching'
         })
     ],
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[contenthash].bundle.js',
         path: path.resolve(__dirname, 'dist')
-    },
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader', 'css-loader'
-                ]
-            }
-        ]
     },
 };
