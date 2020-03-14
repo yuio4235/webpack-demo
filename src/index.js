@@ -1,4 +1,6 @@
 
+const {file ,parse} = require('./globals.js');
+
 function component() {
     const element = document.createElement('div');
 
@@ -9,7 +11,10 @@ function component() {
     const br = document.createElement('br');
 
     button.onclick = () => {
-        this.alert("wow, I can alert in webpack. I hate console.log().");
+        console.log('file: ' + file);
+        
+        console.log("------> call parse(): ");
+        parse();
     };
 
     element.appendChild(button);
