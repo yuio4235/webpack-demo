@@ -1,13 +1,17 @@
-import _ from "lodash";
-
-import Print from "./print.js";
+const webpackNumbers = require('danny-webpack-numbers-lib');
 
 function component() {
     const element = document.createElement('div');
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    const btn = document.createElement('button');
 
-    element.onclick = Print.bind(null, 'Hello webpack');
+    btn.innerHTML = 'Click me to convert nums to words';
+
+    btn.onclick = () => {
+        console.log(webpackNumbers.numsToWord(1));
+    };
+
+    element.appendChild(btn);
 
     return element;
 }
