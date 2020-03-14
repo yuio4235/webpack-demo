@@ -34,6 +34,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "danny-webpack-numbers-lib": "^1.0.0"
+    "danny-webpack-numbers-lib": "^1.0.0",
+    "jquery": "^3.4.1"
   }
 }
